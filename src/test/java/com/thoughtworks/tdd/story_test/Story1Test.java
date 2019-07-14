@@ -115,4 +115,24 @@ public class Story1Test {
         assertNull(ticket);
 
     }
+
+    // exact
+    @Test
+    public void should_return_null_when_call_park_given_parked_car(){
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = new Car();
+
+        parkingBoy.park(car);
+        Ticket ticket = parkingBoy.park(car);
+
+        assertNull(ticket);
+    }
+
+    @Test
+    public void should_return_null_when_call_park_given_null(){
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Ticket ticket = parkingBoy.park(null);
+
+        assertNull(ticket);
+    }
 }
