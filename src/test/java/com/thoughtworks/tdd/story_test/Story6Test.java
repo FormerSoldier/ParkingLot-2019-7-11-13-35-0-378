@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class Story6Test {
-
+    // AC 1
     @Test
     public void should_return_ticket_when_call_park_given_car(){
         ServiceManager serviceManager = new ServiceManager();
@@ -33,4 +33,22 @@ public class Story6Test {
         Assertions.assertNotEquals(parkingBoysList.size(),0);
     }
 
+    //AC 2
+    @Test
+    public void should_return_ticket_when_call_manager_park_given_car(){
+        ServiceManager serviceManager = new ServiceManager();
+        Car car = new Car();
+        Ticket ticket = serviceManager.park(car);
+
+        Assertions.assertNotNull(ticket);
+    }
+
+    @Test
+    public void should_return_car_when_call_manager_fetch_given_ticket(){
+        ServiceManager serviceManager = new ServiceManager();
+        Ticket ticket = serviceManager.park(new Car());
+
+        Car car = serviceManager.fetch(ticket);
+        Assertions.assertNotNull(car);
+    }
 }
