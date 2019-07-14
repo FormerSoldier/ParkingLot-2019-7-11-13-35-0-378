@@ -5,7 +5,10 @@ import java.util.Map;
 
 public class ParkingLot {
     Map<Ticket, Car> parkingInfo = new HashMap<>();
+    private final int TOTALPARKINGCOUNT = 10;
     public Ticket getTicketByCar(Car car) {
+        if(TOTALPARKINGCOUNT == parkingInfo.size())
+            return null;
         Ticket ticket = new Ticket();
         parkingInfo.put(ticket,car);
         return ticket;

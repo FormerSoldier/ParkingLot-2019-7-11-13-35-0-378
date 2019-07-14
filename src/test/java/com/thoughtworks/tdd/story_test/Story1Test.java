@@ -92,7 +92,7 @@ public class Story1Test {
 
     // AC4
     @Test
-    public void should_return_null_when_call_fetch_given_userd_ticket(){
+    public void should_return_null_when_call_fetch_given_used_ticket(){
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car();
         Ticket ticket = parkingBoy.park(car);
@@ -104,4 +104,15 @@ public class Story1Test {
         assertNull(secondReturnCar);
     }
 
+    // AC5
+    @Test
+    public void should_return_null_when_call_park_given_eleven_cars(){
+        ParkingBoy parkingBoy = new ParkingBoy();
+        for(int i = 0; i < 10; i++)
+            parkingBoy.park(new Car());
+        Ticket ticket = parkingBoy.park(new Car());
+
+        assertNull(ticket);
+
+    }
 }
