@@ -22,8 +22,10 @@ public class ParkingLot {
     }
 
     public Car getCarByTicket(Ticket ticket) {
-        if(!parkingInfo.containsKey(ticket))
+        if(!parkingInfo.containsKey(ticket) && ticket != null)
             message = "Unrecognized parking ticket.";
+        if(ticket == null)
+            message = "Please provide your parking ticket";
         return parkingInfo.remove(ticket);
     }
 
