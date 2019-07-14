@@ -3,7 +3,6 @@ package com.thoughtworks.tdd.story_test;
 import com.thoughtworks.tdd.story2.Car;
 import com.thoughtworks.tdd.story2.ParkingBoy;
 import com.thoughtworks.tdd.story2.Ticket;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

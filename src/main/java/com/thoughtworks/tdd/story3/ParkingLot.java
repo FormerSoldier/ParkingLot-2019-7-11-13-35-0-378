@@ -1,4 +1,4 @@
-package com.thoughtworks.tdd.story2;
+package com.thoughtworks.tdd.story3;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,9 +35,5 @@ public class ParkingLot {
         String string = message;
         message = "";
         return string;
-    }
-    // judge the parkingLot is full or not
-    public boolean isFull(){
-        return TOTALPARKINGCOUNT == parkingInfo.size();
     }
 }
