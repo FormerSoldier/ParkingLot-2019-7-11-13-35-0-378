@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class Story2Test {
     // AC1
     @Test
-    public void should_return_Unrecognized_parking_ticket_when_call_fetch_and_query_given_wrong_ticket_to_fetch(){
+    public void should_return_Unrecognized_parking_ticket_when_call_query_after_given_wrong_ticket_to_fetch(){
         ParkingBoy parkingBoy = new ParkingBoy();
         Ticket ticket = new Ticket();
         parkingBoy.fetch(ticket);
@@ -21,7 +21,7 @@ public class Story2Test {
     }
 
     @Test
-    public void should_return_Unrecognized_parking_ticket_when_call_fetch_and_query_given_used_ticket_to_fetch(){
+    public void should_return_Unrecognized_parking_ticket_when_callquery_after_given_used_ticket_to_fetch(){
         ParkingBoy parkingBoy = new ParkingBoy();
         Ticket ticket = parkingBoy.park(new Car());
 
@@ -36,11 +36,22 @@ public class Story2Test {
     }
     // AC 2
     @Test
-    public void should_return_Please_provide_your_parking_ticket_when_call_fetch_and_query_given_null_to_fetch(){
+    public void should_return_Please_provide_your_parking_ticket_when_call_query_after_given_null_to_fetch(){
         ParkingBoy parkingBoy = new ParkingBoy();
 
         parkingBoy.fetch(null);
         String msg = parkingBoy.query();
         assertEquals(msg,"Please provide your parking ticket");
+    }
+
+    // AC 3
+    @Test
+    public void should_return_Not_enough_position_when_call_query_after_given_eleven_cars_to_fetch(){
+        ParkingBoy parkingBoy = new ParkingBoy();
+        for(int i = 0 ; i < 11; i++){
+            parkingBoy.park(new Car());
+        }
+        String msg = parkingBoy.query();
+        assertEquals(msg,"Not enough position.");
     }
 }
