@@ -1,8 +1,8 @@
 package com.thoughtworks.tdd.story_test;
 
-import com.thoughtworks.tdd.story1.Car;
-import com.thoughtworks.tdd.story1.ParkingBoy;
-import com.thoughtworks.tdd.story1.Ticket;
+import com.thoughtworks.tdd.story.Car;
+import com.thoughtworks.tdd.story.ParkingBoy;
+import com.thoughtworks.tdd.story.Ticket;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +27,7 @@ public class Story1Test {
     @Test
     public void should_return_car_when_call_fetch_given_ticket(){
         ParkingBoy parkingBoy = new ParkingBoy();
-        Ticket ticket = new Ticket();
+        Ticket ticket = parkingBoy.park(new Car());
         Car car = parkingBoy.fetch(ticket);
 
         assertNotNull(car);
@@ -105,9 +105,9 @@ public class Story1Test {
 
     // AC5
     @Test
-    public void should_return_null_when_call_park_given_eleven_cars(){
+    public void should_return_null_when_call_park_given_twenty_one_cars(){
         ParkingBoy parkingBoy = new ParkingBoy();
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 21; i++)
             parkingBoy.park(new Car());
         Ticket ticket = parkingBoy.park(new Car());
 

@@ -1,8 +1,8 @@
 package com.thoughtworks.tdd.story_test;
 
-import com.thoughtworks.tdd.story2.Car;
-import com.thoughtworks.tdd.story2.ParkingBoy;
-import com.thoughtworks.tdd.story2.Ticket;
+import com.thoughtworks.tdd.story.Car;
+import com.thoughtworks.tdd.story.ParkingBoy;
+import com.thoughtworks.tdd.story.Ticket;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -45,9 +45,9 @@ public class Story2Test {
 
     // AC 3
     @Test
-    public void should_return_Not_enough_position_when_call_query_after_given_eleven_cars_to_fetch(){
+    public void should_return_Not_enough_position_when_call_query_after_given_twenty_one_cars_to_fetch(){
         ParkingBoy parkingBoy = new ParkingBoy();
-        for(int i = 0 ; i < 11; i++){
+        for(int i = 0 ; i < 21; i++){
             parkingBoy.park(new Car());
         }
         String msg = parkingBoy.query();
