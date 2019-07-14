@@ -4,7 +4,6 @@ import com.thoughtworks.tdd.story.Car;
 import com.thoughtworks.tdd.story.ParkingBoy;
 import com.thoughtworks.tdd.story.ServiceManager;
 import com.thoughtworks.tdd.story.Ticket;
-import net.bytebuddy.asm.Advice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -79,29 +78,14 @@ public class Story6Test {
     }
 
 
-   /* @Test
-    public void should_return_Unrecognized_parking_ticket_when_call_query_after_given_wrong_ticket_to_service_manager_parkingBoy_park(){
+    @Test
+    public void should_return_Not_enough_position_when_call_query_after_given_twenty_one_cars_to_service_manager_parkingBoy_park(){
         ServiceManager serviceManager = new ServiceManager();
-        ParkingBoy firstParkingBoy = serviceManager.getParkingBoysList().get(0);
         for(int i = 0; i < 20; i++)
-            serviceManager.tellBoyToPark(1, new Car());
-        firstParkingBoy.park(new Car());
+            serviceManager.parkCarByNthBoy(1, new Car());
+        serviceManager.parkCarByNthBoy(1, new Car());
         String message = serviceManager.displayErrorMessageByNthBoy(1);
-        Assertions.assertEquals(message,"Unrecognized parking ticket.");
+        Assertions.assertEquals(message,"Not enough position.");
 
     }
-*/
-
-/*
-
-    // AC 3
-    @Test
-    public void should_return_Not_enough_position_when_call_query_after_given_twenty_one_cars_to_fetch(){
-        ParkingBoy parkingBoy = new ParkingBoy();
-        for(int i = 0 ; i < 21; i++){
-            parkingBoy.park(new Car());
-        }
-        String msg = parkingBoy.query();
-        assertEquals(msg,"Not enough position.");
-    }*/
 }
