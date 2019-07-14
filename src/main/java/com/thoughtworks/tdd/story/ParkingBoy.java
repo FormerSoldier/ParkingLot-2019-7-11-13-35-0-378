@@ -4,8 +4,8 @@ package com.thoughtworks.tdd.story;
  * Created by 桐爷哥 on 2019/7/13.
  */
 public class ParkingBoy {
-    ParkingLot firstParkingLot = new ParkingLot();
-    ParkingLot secondParkingLot = new ParkingLot();
+    private ParkingLot firstParkingLot = new ParkingLot();
+    private ParkingLot secondParkingLot = new ParkingLot();
     public Ticket park(Car car) {
         if (!firstParkingLot.isFull())
             return firstParkingLot.getTicketByCar(car);
@@ -33,5 +33,9 @@ public class ParkingBoy {
 
     public ParkingLot getSecondParkingLot() {
         return secondParkingLot;
+    }
+
+    public void setSecondParkingLot(ParkingLot secondParkingLot) {
+        this.secondParkingLot = secondParkingLot;
     }
 }

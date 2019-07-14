@@ -3,17 +3,17 @@ package com.thoughtworks.tdd.story;
 public class SmartParkingBoy extends ParkingBoy{
     public int getLotAvailableParkingCountByNum(int i) {
         if(i == 1)
-            return firstParkingLot.getAvailableParkingCount();
+            return getFirstParkingLot().getAvailableParkingCount();
         else if(i == 2)
-            return secondParkingLot.getAvailableParkingCount();
+            return getSecondParkingLot().getAvailableParkingCount();
         return 0;
     }
 
     @Override
     public Ticket park(Car car) {
-        if (firstParkingLot.getAvailableParkingCount() >= secondParkingLot.getAvailableParkingCount())
-            return firstParkingLot.getTicketByCar(car);
+        if (getFirstParkingLot().getAvailableParkingCount() >= getSecondParkingLot().getAvailableParkingCount())
+            return getFirstParkingLot().getTicketByCar(car);
         else
-            return secondParkingLot.getTicketByCar(car);
+            return getSecondParkingLot().getTicketByCar(car);
     }
 }

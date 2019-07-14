@@ -5,11 +5,17 @@ import java.util.Map;
 
 public class ParkingLot {
     Map<Ticket, Car> parkingInfo = new HashMap<>();
-    private final int TOTALPARKINGCOUNT = 10;
+    private int totalParkingCount = 10;
     private String message = "";
 
+    public ParkingLot() {
+    }
+    public ParkingLot(int totalParkingCount) {
+        this.totalParkingCount = totalParkingCount;
+    }
+
     public Ticket getTicketByCar(Car car) {
-        if(TOTALPARKINGCOUNT == parkingInfo.size()){
+        if(totalParkingCount == parkingInfo.size()){
             message = "Not enough position.";
             return null;
         }
@@ -38,14 +44,15 @@ public class ParkingLot {
     }
     // judge the parkingLot is full or not
     public boolean isFull(){
-        return TOTALPARKINGCOUNT == parkingInfo.size();
+        return totalParkingCount == parkingInfo.size();
     }
 
     //get the available parking count from parkingLot
     public int getAvailableParkingCount(){
-        return TOTALPARKINGCOUNT - parkingInfo.size();
+        return totalParkingCount - parkingInfo.size();
     }
 
-
-
+    public int getTotalParkingCount() {
+        return totalParkingCount;
+    }
 }
