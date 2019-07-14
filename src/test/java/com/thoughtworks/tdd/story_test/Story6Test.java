@@ -4,6 +4,7 @@ import com.thoughtworks.tdd.story.Car;
 import com.thoughtworks.tdd.story.ParkingBoy;
 import com.thoughtworks.tdd.story.ServiceManager;
 import com.thoughtworks.tdd.story.Ticket;
+import net.bytebuddy.asm.Advice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,13 +16,6 @@ public class Story6Test {
     @Test
     public void should_return_ticket_when_call_park_given_car(){
         ServiceManager serviceManager = new ServiceManager();
-        ParkingBoy pb1 = new ParkingBoy();
-        ParkingBoy pb2 = new ParkingBoy();
-        ParkingBoy pb3 = new ParkingBoy();
-
-        serviceManager.addParkingBoyToList(pb1);
-        serviceManager.addParkingBoyToList(pb2);
-        serviceManager.addParkingBoyToList(pb3);
 
         List<ParkingBoy> parkingBoysList = serviceManager.getParkingBoysList();
         for(int i = 0; i < parkingBoysList.size(); i++){
@@ -43,6 +37,7 @@ public class Story6Test {
         Assertions.assertNotNull(ticket);
     }
 
+
     @Test
     public void should_return_car_when_call_manager_fetch_given_ticket(){
         ServiceManager serviceManager = new ServiceManager();
@@ -51,4 +46,62 @@ public class Story6Test {
         Car car = serviceManager.fetch(ticket);
         Assertions.assertNotNull(car);
     }
+
+    // AC 3
+
+    @Test
+    public void should_return_Unrecognized_parking_ticket_when_call_query_after_given_wrong_ticket_to_service_manager_parkingBoy_park(){
+        ServiceManager serviceManager = new ServiceManager();
+        Ticket ticket = new Ticket();
+        Car car = serviceManager.fetchCarByNthBoy(1,ticket);
+        String message = serviceManager.displayErrorMessageByNthBoy(1);
+        Assertions.assertEquals(message,"Unrecognized parking ticket.");
+    }
+
+    @Test
+    public void should_return_Unrecognized_parking_ticket_when_call_query_after_given_used_ticket_to_service_manager_parkingBoy_park(){
+        ServiceManager serviceManager = new ServiceManager();
+        Ticket ticket = serviceManager.parkCarByNthBoy(1,new Car());
+        serviceManager.fetchCarByNthBoy(1,ticket);
+        serviceManager.fetchCarByNthBoy(1,ticket);
+
+        String message = serviceManager.displayErrorMessageByNthBoy(1);
+        Assertions.assertEquals(message,"Unrecognized parking ticket.");
+    }
+
+    @Test
+    public void should_return_Please_provide_your_parking_ticket_when_call_query_after_given_null_to_service_manager_parkingBoy_fetch(){
+        ServiceManager serviceManager = new ServiceManager();
+        serviceManager.fetchCarByNthBoy(1,null);
+
+        String message = serviceManager.displayErrorMessageByNthBoy(1);
+        Assertions.assertEquals(message,"Please provide your parking ticket");
+    }
+
+
+   /* @Test
+    public void should_return_Unrecognized_parking_ticket_when_call_query_after_given_wrong_ticket_to_service_manager_parkingBoy_park(){
+        ServiceManager serviceManager = new ServiceManager();
+        ParkingBoy firstParkingBoy = serviceManager.getParkingBoysList().get(0);
+        for(int i = 0; i < 20; i++)
+            serviceManager.tellBoyToPark(1, new Car());
+        firstParkingBoy.park(new Car());
+        String message = serviceManager.displayErrorMessageByNthBoy(1);
+        Assertions.assertEquals(message,"Unrecognized parking ticket.");
+
+    }
+*/
+
+/*
+
+    // AC 3
+    @Test
+    public void should_return_Not_enough_position_when_call_query_after_given_twenty_one_cars_to_fetch(){
+        ParkingBoy parkingBoy = new ParkingBoy();
+        for(int i = 0 ; i < 21; i++){
+            parkingBoy.park(new Car());
+        }
+        String msg = parkingBoy.query();
+        assertEquals(msg,"Not enough position.");
+    }*/
 }
