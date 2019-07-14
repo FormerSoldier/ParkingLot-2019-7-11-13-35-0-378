@@ -66,5 +66,28 @@ public class Story1Test {
 
     }
 
-    
+    //AC3
+    @Test
+    public void should_return_null_when_call_fetch_given_wrong_ticket(){
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = new Car();
+        parkingBoy.park(car);
+
+        Ticket ticket = new Ticket();
+        Car ticket_return_car = parkingBoy.fetch(ticket);
+
+        assertNull(ticket_return_car);
+    }
+
+    @Test
+    public void should_return_null_when_call_fetch_given_null(){
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = new Car();
+        parkingBoy.park(car);
+
+        Car ticket_return_car = parkingBoy.fetch(null);
+
+        assertNull(ticket_return_car);
+    }
+
 }
