@@ -90,4 +90,18 @@ public class Story1Test {
         assertNull(ticket_return_car);
     }
 
+    // AC4
+    @Test
+    public void should_return_null_when_call_fetch_given_userd_ticket(){
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = new Car();
+        Ticket ticket = parkingBoy.park(car);
+
+        Car firstReturnCar = parkingBoy.fetch(ticket);
+        Car secondReturnCar = parkingBoy.fetch(ticket);
+
+        assertNotNull(firstReturnCar);
+        assertNull(secondReturnCar);
+    }
+
 }
